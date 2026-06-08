@@ -73,6 +73,9 @@ public class RegistryWithMockTest {
         verify(repo, never()).save(anyInt(), anyString(), anyInt(), anyBoolean());
     }
 
+    // Given: repositorio simula que el ID no existe
+    // When: registro persona válida
+    // Then: resultado VALID y save() se invoca con los datos correctos
     @Test
     public void shouldSaveValidPerson() throws Exception {
 
@@ -95,6 +98,9 @@ public class RegistryWithMockTest {
         );
     }
 
+    // Given: save() lanza RuntimeException
+    // When: intento registrar persona válida
+    // Then: el caso de uso propaga la excepción como IllegalStateException
     @Test(expected = IllegalStateException.class)
     public void shouldThrowExceptionWhenSaveFails() throws Exception {
 
